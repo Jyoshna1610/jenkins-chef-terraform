@@ -11,7 +11,7 @@ stages {
                  script{
 
                         
-                            git "https://github.com/Abishek-Ravichander/Terraform-Chef.git"
+                            git "https://github.com/Jyoshna1610/jenkins-chef-terraform.git"
                         
                     }
                 }
