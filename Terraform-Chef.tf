@@ -33,7 +33,7 @@ provisioner "remote-exec" {
     type     = "ssh"
     user     = "ec2-user"
     password = ""
-    private_key = file("${path.module}/chef-terra.pem")
+    private_key = file("${path.module}/terra-chef-jen.pem")
     host = self.public_ip
   }
   }
