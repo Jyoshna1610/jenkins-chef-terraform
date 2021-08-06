@@ -25,8 +25,9 @@ provisioner "remote-exec" {
        "cd chef-repo",
        "mv apache-cookbook cookbooks",
        "cd cookbooks",
-       " printf 'yes\n' | chef exec ruby -c apache-cookbook/recipes/apache-recipe.rb",              
-       "sudo chef-client -zr \"recipe[apache-cookbook::apache-recipe]\"",
+       #" printf 'yes\n' | chef exec ruby -c apache-cookbook/recipes/apache-recipe.rb",              
+       #"sudo chef-client -zr \"recipe[apache-cookbook::apache-recipe]\"",
+       "knife bootstrap 172.31.45.126 --ssh-user ec2-user --sudo -i terra-chef-jen.pem -N chefnode1",
     ]
       
       connection {
