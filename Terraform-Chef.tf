@@ -2,8 +2,13 @@ resource "aws_instance" "web1" {
    ami           = "ami-0c2b8ca1dad447f8a"
    instance_type = "t2.micro"
    count = 1
-   vpc_security_group_ids = ["sg-0b37ee9a54bce1416"]
+   #vpc_security_group_ids = ["sg-0b37ee9a54bce1416"]
    key_name               = "terra-chef-jen"
+   
+    network_interface {
+    device_index = 0
+   network_interface_id = aws_network_interface.web-server-nic.id
+  }
    
    
 provisioner "remote-exec" {
@@ -37,7 +42,29 @@ provisioner "remote-exec" {
     private_key = file("${path.module}/terra-chef-jen.pem")
     host = self.public_ip
   }
+   resource "aws_eip" "eip" {
+  #instance = aws_instance.web1.id
+   vpc                       = true  
+  network_interface         = aws_network_interface.web-server-nic.id
+  associate_with_private_ip = "172.31.8.149"
+ # depends_on = [    "igw-1fe83d65"  ]
+   
   }
+   resource "aws_eip_association" "eip_assoc" {
+  #instance_id   = aws_instance.web1.id
+   instance_id = aws_instance.web1[0].id
+  allocation_id = "eipalloc-0be91111be56fdf8e"
+}
+
+resource "aws_network_interface" "web-server-nic" {
+  subnet_id       = "subnet-fe80db98"
+  private_ips     = ["172.31.8.149"]
+  security_groups = ["sg-0b37ee9a54bce1416"]
+#172.31.48.0/20
+  
+}
+   
+   
       
  }
 
