@@ -66,5 +66,5 @@ resource "aws_network_interface" "web-server-nic" {
    
    
       
- }
+ 
 
