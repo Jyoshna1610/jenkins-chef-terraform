@@ -3,7 +3,7 @@ pipeline {
 environment {
         AWS_ACCESS_KEY_ID = credentials('AWS-ACCESS-KEY')
         AWS_SECRET_ACCESS_KEY = credentials('AWS-SECRET-KEY')
-        AWS_DEFAULT_REGION = "Global"
+        AWS_DEFAULT_REGION = "ap-south-1a"
     }
 agent  any
 stages {
