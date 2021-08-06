@@ -3,7 +3,7 @@ resource "aws_instance" "web1" {
    instance_type = "t2.micro"
    count = 1
    vpc_security_group_ids = ["sg-0b37ee9a54bce1416"]
-   key_name               = "terra-chef-jen.pem"
+   key_name               = "terra-chef-jen"
    
    
 provisioner "remote-exec" {
