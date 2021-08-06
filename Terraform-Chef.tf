@@ -1,5 +1,5 @@
 resource "aws_instance" "web1" {
-   ami           = "ami-i-0ea2caded0c0eadda"
+   ami           = "ami-0c2b8ca1dad447f8a"
    instance_type = "t2.micro"
    count = 1
    vpc_security_group_ids = ["sg-0b37ee9a54bce1416"]
