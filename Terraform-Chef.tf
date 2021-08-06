@@ -42,6 +42,15 @@ provisioner "remote-exec" {
     private_key = file("${path.module}/terra-chef-jen.pem")
     host = self.public_ip
   }
+   environment     = "_default"
+    client_options  = ["chef_license 'accept'"]
+    run_list        = ["apache-cookbook::apache-recipe"]
+    node_name       = "web1"
+    secret_key      = "${file("../encrypted_data_bag_secret")}"
+    server_url      = ""https://api.chef.io/organizations/abikr""
+    recreate_client = true
+    user_name       = "abikr"
+    user_key        = "${file("../abishekkr.pem")}"
 }
 }
    resource "aws_eip" "eip" {
