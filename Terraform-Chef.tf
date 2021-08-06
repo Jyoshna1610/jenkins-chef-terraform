@@ -42,6 +42,8 @@ provisioner "remote-exec" {
     private_key = file("${path.module}/terra-chef-jen.pem")
     host = self.public_ip
   }
+}
+}
    resource "aws_eip" "eip" {
   #instance = aws_instance.web1.id
    vpc                       = true  
