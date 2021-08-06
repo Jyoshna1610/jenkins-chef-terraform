@@ -1,8 +1,8 @@
 resource "aws_instance" "web1" {
-   ami           = "ami-i-0ea2caded0c0eaddaa"
+   ami           = "ami-i-0ea2caded0c0eadda"
    instance_type = "t2.micro"
    count = 1
-   vpc_security_group_ids = ["sg-0990c12803c100850"]
+   vpc_security_group_ids = [""]
    key_name               = "chef-terra.pem"
    
    
