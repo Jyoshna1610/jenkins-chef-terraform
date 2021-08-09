@@ -64,7 +64,7 @@ resource "aws_network_interface" "web-server-nic" {
   private_ips     = ["172.31.8.149"]
   security_groups = ["sg-0b37ee9a54bce1416"]
 #172.31.48.0/20
- }
+ 
 
 }
 
