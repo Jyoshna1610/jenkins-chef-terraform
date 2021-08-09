@@ -65,34 +65,7 @@ resource "aws_network_interface" "web-server-nic" {
   security_groups = ["sg-0b37ee9a54bce1416"]
 #172.31.48.0/20
  }
-resource "aws_instance" "web" {
-  # ...
 
-  provisioner "chef" {
-    attributes_json = <<EOF
-      {
-        "Private_ip": "172.31.8.149",
-        "webapp": {
-          "cluster1": {
-            "nodes": [
-              "172.31.8.149",
-              
-            ]
-          }
-        }
-      }
-    EOF
-
-    environment     = "_default"
-    client_options  = ["chef_license 'accept'"]
-    run_list        = ["apache-cookbook::apache-recipe"]
-    node_name       = "web1"
-    secret_key      = "${file("../encrypted_data_bag_secret")}"
-    server_url      = ""https://api.chef.io/organizations/abikr""
-    recreate_client = true
-    user_name       = "abikr"
-    user_key        = "${file("../abishekkr.pem")}"
-    }
 }
 
    
